@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+//use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -20,8 +21,25 @@ class UserController extends Controller
 
         return view('admin.user')->with(['users' => $data]);
 
-
     }
+
+
+    // Generate PDF
+    public function createPDF() {
+
+        $data = User::all()->where('role', '=', 'normal');
+
+        // share data to view
+        view()->share('users',$data);
+        $pdf = PDF::loadView('pdf.user', $data);
+
+//        // download PDF file with download method
+        return $pdf->download('pdf_file.pdf');
+        return redirect('/');
+    }
+
+
+
 
     /**
      * Show the form for creating a new resource.

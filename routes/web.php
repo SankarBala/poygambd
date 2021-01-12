@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,14 +30,15 @@ Route::get('/about', function () {
 
 Route::group([
     'prefix' => 'admin',
-    'namespace' => 'App\Http\Controllers\Admin',
     'as' => 'admin.'
 ], function () {
     Route::get('/', function () {
         return view('admin.dashboard');
     })->name('dashboard');
 
+    Route::get('/user/export', [UserController::class, 'createPDF'])->name('export');
     Route::resource('/user', UserController::class);
+
 });
 
 
