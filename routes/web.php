@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,30 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+})->name('welcome');
+Route::get('/service', function () {
+    return view('service');
+})->name('service');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+
+Route::group([
+    'prefix' => 'admin',
+    'namespace' => 'App\Http\Controllers\Admin',
+    'as' => 'admin.'
+], function () {
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+
+    Route::resource('/user', UserController::class);
 });
+
 
 Auth::routes();
 

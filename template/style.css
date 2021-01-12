@@ -1,7 +1,3 @@
-.input-form-identifier {
-  width: 150px;
-}
-
 .top-header {
   background: #0a97c2;
 }
@@ -11,16 +7,19 @@ ul.social-link {
   padding: 0;
   margin: 0;
 }
+
 ul.social-link li {
   display: inline;
   padding: 0;
   margin: 0;
 }
+
 ul.social-link li a {
   color: white;
   padding: 0px 8px;
   font-size: 24px;
 }
+
 ul.social-link li a:hover {
   text-decoration: none;
 }
@@ -30,30 +29,32 @@ ul.auth-link {
   padding: 0;
   margin: 0;
 }
+
 ul.auth-link li {
   display: inline;
 }
+
 ul.auth-link li a {
   color: white;
-  padding: 8px 12px;
+  padding: 10px 2px;
   margin-top: 10px;
   font-size: 16px;
-}
-ul.auth-link li a:hover {
-  text-decoration: none;
 }
 
 .main-nav ul {
   list-style-type: none;
 }
+
 .main-nav ul li {
   display: inline;
 }
+
 .main-nav ul a {
   color: black;
   font-size: 1.25rem;
   padding: 4px 1rem;
 }
+
 .main-nav ul a:hover {
   text-decoration: none;
   color: #0a97c2;
@@ -67,3 +68,4 @@ ul.auth-link li a:hover {
 .footer-bottom {
   background-color: black;
 }
+/*# sourceMappingURL=style.css.map */
