@@ -34,8 +34,7 @@ class UserController extends Controller
         $pdf = PDF::loadView('pdf.user', $data);
 
 //        // download PDF file with download method
-        return $pdf->download('pdf_file.pdf');
-        return redirect('/');
+        return $pdf->download('userlist.pdf');
     }
 
 

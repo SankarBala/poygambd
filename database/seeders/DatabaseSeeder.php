@@ -18,12 +18,12 @@ class DatabaseSeeder extends Seeder
         // Create admin
 
         User::create([
-            'name' => 'Admin',
-            'email' => 'sankarbala232@gmail.com',
+            'name' => 'Administrator',
+            'email' => 'info@cube.com.bd',
             'role' => 'admin',
             'password' => Hash::make('00000000')
         ]);
 
-        User::factory(100)->create();
+        User::factory(199)->create();
     }
 }

@@ -27,10 +27,15 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
+Route::get('/401', function () {
+    return view('auth.401');
+})->name('401');
+
 
 Route::group([
     'prefix' => 'admin',
-    'as' => 'admin.'
+    'as' => 'admin.',
+    'middleware'=> 'admin'
 ], function () {
     Route::get('/', function () {
         return view('admin.dashboard');
