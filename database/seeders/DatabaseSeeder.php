@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Candidate;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('00000000')
         ]);
 
-        User::factory(199)->create();
+        User::factory(3)->create();
+        Candidate::factory(4)->create();
     }
 }

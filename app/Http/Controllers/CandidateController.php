@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\User;
-//use Barryvdh\DomPDF\PDF;
-use Barryvdh\DomPDF\Facade as PDF;
+use App\Models\Candidate;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class CandidateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,28 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = User::where('role', '=', 'candidate')->paginate(20);
-
-        return view('admin.user')->with(['users' => $data]);
-
+        //
     }
-
-
-    // Generate PDF
-    public function createPDF() {
-
-        $data = User::all()->where('role', '=', 'candidate');
-
-        // share data to view
-        view()->share('users',$data);
-        $pdf = PDF::loadView('pdf.user', $data);
-
-//        // download PDF file with download method
-        return $pdf->download('userlist.pdf');
-    }
-
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -53,7 +30,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -64,10 +41,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Candidate $candidate)
     {
         //
     }
@@ -75,10 +52,10 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Candidate $candidate)
     {
         //
     }
@@ -86,11 +63,11 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Candidate $candidate)
     {
         //
     }
@@ -98,10 +75,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  \App\Models\Candidate  $candidate
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Candidate $candidate)
     {
         //
     }
