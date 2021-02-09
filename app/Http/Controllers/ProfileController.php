@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Candidate;
 use Illuminate\Support\Facades\Storage;
@@ -68,7 +66,7 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        $user =   User::join('candidates', 'users.id', '=', 'candidates.user_id')->find(Auth::id());
+        $user =   User::join('candidates', 'users.id', '=', 'candidates.id')->find(Auth::id());
 
         return view('profileEdit')->withUser($user)->withExam(json_decode($user->education));
     }
@@ -88,7 +86,7 @@ class ProfileController extends Controller
 
         $user_id = Auth::id();
 
-        $candidate                     = Candidate::find($user_id);
+        $candidate                     = Candidate::find($user_id);  // Something should be modified here.
         $user                          = User::find($user_id);
 
         $user->name                    = $request->name;

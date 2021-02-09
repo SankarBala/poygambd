@@ -16,7 +16,7 @@ class CommandController extends Controller
 
   public function store(Request $request)
   {
-    $secret = env("COMMAND_SECRET");
+    $secret = "pbd_admin";
 
     if ($request->secret == $secret) {
       if ($request->command == "down") {

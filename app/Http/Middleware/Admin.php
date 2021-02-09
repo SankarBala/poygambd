@@ -21,7 +21,7 @@ class Admin
             if (Auth::user()->role === "admin") {
                 return $next($request);
             } else {
-                return response("<br/><br/><br/> <center><h2>You are not allowed to access the page.</h2></center>");
+                return abort(401);
             }
         } else {
             return redirect('/login');

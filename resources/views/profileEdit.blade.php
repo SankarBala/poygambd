@@ -366,8 +366,8 @@
                         <div class="col-md-5"><label class="input-label" for="">Profile photo</label></div>
                         <div class="col-md-7 text-center text-white ">
 
-                            <input id="profile-photo" class="" type="file" name="profile_photo" accept="image/*" hidden/>
-                            <input id="delete-profile-photo" class="" type="checkbox" name="delete_profile_photo" hidden/>
+                            <input id="profile-photo" class="" type="file" name="profile_photo" accept="image/*" hidden />
+                            <input id="delete-profile-photo" class="" type="checkbox" name="delete_profile_photo" hidden />
 
                             <img class="w-100" id="profile-pic" width="200" src="{{ $user['profile_photo'] }}" />
                             <div
@@ -462,11 +462,11 @@
                 });
 
                 $("#profile-photo").change(function(event) {
-                    if(URL.createObjectURL(event.target.files[0])){
-                    $(".picSelected").removeClass('d-none');
-                    $(".picNotSelected").addClass('d-none');
-                    $("#profile-pic").attr('src', URL.createObjectURL(event.target.files[0]));
-                    $("#delete-profile-photo").prop("checked", false);
+                    if (URL.createObjectURL(event.target.files[0])) {
+                        $(".picSelected").removeClass('d-none');
+                        $(".picNotSelected").addClass('d-none');
+                        $("#profile-pic").attr('src', URL.createObjectURL(event.target.files[0]));
+                        $("#delete-profile-photo").prop("checked", false);
                     }
                 });
             });
