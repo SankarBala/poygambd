@@ -5,7 +5,7 @@
 
     <div class="container bg-info p-3">
         <div class="text-center lead">
-            <h1 class="">Candidate details</h1>
+            <h1 class="">Edit profile</h1>
         </div>
 
         <form action="{{ route('profile-update') }}" method="post" enctype="multipart/form-data">

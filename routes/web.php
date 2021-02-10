@@ -47,12 +47,13 @@ Route::group([
         return view('admin.adminto.dashboard');
     })->name('dashboard');
 
-    Route::get('/user/export', [UserController::class, 'createPDF'])->name('export');
-    Route::resource('/user', UserController::class);
+    // Route::get('/user/export', [UserController::class, 'createPDF'])->name('export');
+    // Route::resource('/user', UserController::class);
 
     Route::resource('/candidate', CandidateController::class, ['name' => 'candidate']);
     
     Route::get('/print/candidate/{id}', [PrintController::class, 'candidatePrint'])->name('print.candidate');
+    Route::get('/print/candidates', [PrintController::class, 'candidateList'])->name('print.candidateList');
 
 
 });
@@ -63,13 +64,11 @@ Route::group([
 Auth::routes();
 
 
-// Route::resource('/command', CommandController::class, ['name' => 'command']);
-
-
 Route::group([
     'middleware' => 'auth'
 ], function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile-edit');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile-update');
 });
 

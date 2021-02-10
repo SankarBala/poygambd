@@ -15,8 +15,10 @@ class CreateCandidatesTable extends Migration
     {
         Schema::create('candidates', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->default(2);
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
             $table->string('father')->nullable();
             $table->string('present_address')->nullable();
             $table->string('parmanent_address')->nullable();

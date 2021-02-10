@@ -135,33 +135,20 @@
                     </div>
                 </li>
 
-                <li class="dropdown notification-list">
-                    <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect">
-                        <i class="fe-settings noti-icon"></i>
-                    </a>
-                </li>
-
-
+            
             </ul>
 
             <!-- LOGO -->
             <div class="logo-box">
-                <a href="index.html" class="logo logo-dark text-center">
+                <a href="/admin/" class="logo logo-dark text-center">
                     <span class="logo-lg">
-                        <img src="/assets/images/logo-dark.png" alt="" height="16">
+                        <img src="{{asset('storage/images/logo/logo.jpg')}}" alt="" height="60">
                     </span>
                     <span class="logo-sm">
-                        <img src="/assets/images/logo-sm.png" alt="" height="24">
+                        <img src="{{asset('storage/images/logo/logo.jpg')}}" alt="" height="60">
                     </span>
                 </a>
-                <a href="index.html" class="logo logo-light text-center">
-                    <span class="logo-lg">
-                        <img src="/assets/images/logo-light.png" alt="" height="16">
-                    </span>
-                    <span class="logo-sm">
-                        <img src="/assets/images/logo-sm.png" alt="" height="24">
-                    </span>
-                </a>
+                
             </div>
 
             <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
@@ -220,7 +207,7 @@
 
                         </div>
                     </div>
-                    <p class="text-muted">Role</p>
+                    <p class="text-muted">Administrator</p>
 
                 </div>
 
@@ -231,7 +218,7 @@
 
                         <li>
                             <a href="/admin/">
-                                <i class="mdi mdi-view-dashboard"></i>
+                                <i class="fas fa-tachometer-alt"></i>
                                 <span> Dashboard </span>
                             </a>
                         </li>
@@ -241,19 +228,19 @@
 
                         <li>
                             <a href="{{ route('admin.candidate.create') }}">
-                                <i class="mdi mdi-forum"></i>
+                                <i class="fas fa-plus-square"></i>
                                 <span> Add new</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('admin.candidate.index') }}">
-                                <i class="mdi mdi-forum"></i>
+                                <i class=" fas fa-list"></i>
                                 <span> Candidate list </span>
                             </a>
                         </li>
                         <li>
-                            <a href="/admin/user/export/">
-                                <i class=""></i>
+                            <a href="{{route('admin.print.candidateList')}}">
+                                <i class="fas fa-angle-double-down"></i>
                                 <span> Export </span>
                             </a>
                         </li>
@@ -269,7 +256,7 @@
                                 </ul>
                             </li> -->
 
-                        <li class="menu-title">Apps</li>
+                        {{-- <li class="menu-title">Apps</li>
 
                         <li>
                             <a href="apps-chat.html">
@@ -277,7 +264,7 @@
                                 <span class="badge badge-purple float-right">New</span>
                                 <span> Chat </span>
                             </a>
-                        </li>
+                        </li> --}}
 
 
 
@@ -335,7 +322,7 @@
     <!-- END wrapper -->
 
     <!-- Right Sidebar -->
-    <div class="right-bar">
+    {{-- <div class="right-bar">
 
         <div class="slimscroll-menu">
 
@@ -355,7 +342,7 @@
 
             </div>
         </div> <!-- end slimscroll-menu-->
-    </div>
+    </div> --}}
     <!-- /Right-bar -->
 
 

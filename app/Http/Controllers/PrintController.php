@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Candidate;
 use Barryvdh\DomPDF\Facade as PDF;
 
 class PrintController extends Controller
@@ -11,7 +12,7 @@ class PrintController extends Controller
     public function candidateList()
     {
 
-        $data = User::all()->where('role', '=', 'candidate');
+        $data = Candidate::all();
         view()->share('users', $data);
         $pdf = PDF::loadView('pdf.user', $data);
 
@@ -20,8 +21,8 @@ class PrintController extends Controller
 
     public function candidatePrint($id)
     {
+        $user =   Candidate::find($id);
 
-        $user =   User::join('candidates', 'users.id', '=', 'candidates.id')->find($id);
         view()->share('user', $user);
         $pdf = PDF::loadView('pdf.profile', $user);
 

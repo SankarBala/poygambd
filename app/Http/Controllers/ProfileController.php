@@ -16,14 +16,11 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id = 0)
+    public function index()
     {
-        if ($id) {
+        $user =   User::join('candidates', 'users.id', '=', 'candidates.user_id')->find(Auth::id());
 
-            return $id;
-        }
-
-        return 'index';
+        return view('profile')->withUser($user)->withExam(json_decode($user->education));
     }
 
     /**
@@ -66,7 +63,7 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        $user =   User::join('candidates', 'users.id', '=', 'candidates.id')->find(Auth::id());
+        $user =   User::join('candidates', 'users.id', '=', 'candidates.user_id')->find(Auth::id());
 
         return view('profileEdit')->withUser($user)->withExam(json_decode($user->education));
     }
@@ -86,10 +83,11 @@ class ProfileController extends Controller
 
         $user_id = Auth::id();
 
-        $candidate                     = Candidate::find($user_id);  // Something should be modified here.
+        $candidate                     = Candidate::where('user_id', $user_id)->first();
         $user                          = User::find($user_id);
 
         $user->name                    = $request->name;
+        $candidate->name               = $request->name;
         $candidate->father             = $request->father;
         $candidate->present_address    = $request->present_address;
         $candidate->parmanent_address  = $request->parmanent_address;

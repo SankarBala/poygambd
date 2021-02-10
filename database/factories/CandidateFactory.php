@@ -22,6 +22,7 @@ class CandidateFactory extends Factory
     public function definition()
     {
         return [
+            'name' => $this->faker->name,
             'father' => $this->faker->name,
         ];
     }

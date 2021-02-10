@@ -19,7 +19,7 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        $data = User::where('role', '=', 'candidate')->paginate(20);
+        $data = Candidate::paginate(20);
 
         return view('admin.adminto.candidates')->with(['users' => $data]);
     }
@@ -31,7 +31,7 @@ class CandidateController extends Controller
      */
     public function create()
     {
-        return  'create';
+        return view('admin.adminto.candidateCreate');
     }
 
     /**
@@ -42,7 +42,55 @@ class CandidateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $candidate                     = new Candidate;
+
+        $candidate->name               = $request->name;
+        $candidate->father             = $request->father;
+        $candidate->present_address    = $request->present_address;
+        $candidate->parmanent_address  = $request->parmanent_address;
+        $candidate->fb_id              = $request->fb_id;
+        $candidate->religion           = $request->religion;
+        $candidate->blood_group        = $request->blood_group;
+        $candidate->height             = $request->height;
+        $candidate->weight             = $request->weight;
+        $candidate->body_color         = $request->body_color;
+        $candidate->phone              = $request->phone;
+        $candidate->profession         = $request->profession;
+        $candidate->education          = json_encode($request->exam);
+        $candidate->father_profession  = $request->father_profession;
+        $candidate->father_phone       = $request->father_phone;
+        $candidate->mother_profession  = $request->mother_profession;
+        $candidate->mother_phone       = $request->mother_phone;
+        $candidate->siblings           = $request->siblings;
+        $candidate->extra_virtue       = $request->extra_virtue;
+        $candidate->images             = $request->images;
+        $candidate->gender             = $request->gender;
+        $candidate->premarried         = $request->premarried || 0;
+        $candidate->pre_spouse_name    = $request->premarried ? $request->pre_spouse_name : null;
+        $candidate->pre_spouse_father  = $request->premarried ? $request->pre_spouse_father : null;
+        $candidate->divorce_details    = $request->premarried ? $request->divorce_details : null;
+        $candidate->pre_spouse_address = $request->premarried ? $request->pre_spouse_address : null;
+        $candidate->dob                = $request->dob;
+
+        $candidate->save();
+
+        if ($request->hasFile('profile_photo')) {
+            $fileName = 'profile_id_' . $candidate->id . '_' . time() . '.' . $request->profile_photo->extension();
+            $request->profile_photo->storeAs('public/images/profile_photo/', $fileName);
+            $url = Storage::url("images/profile_photo/" . $fileName);
+            $candidate->profile_photo = $url;
+        }
+
+        if ($request->delete_profile_photo) {
+            $$candidate->profile_photo = null;
+        }
+
+        $candidate->save();
+
+        $request->session()->flash('status', 'Profile updated successfully');
+
+        return redirect()->route('admin.candidate.edit', $candidate->id);
     }
 
     /**
@@ -53,12 +101,13 @@ class CandidateController extends Controller
      */
     public function show($id)
     {
-        $user =   User::join('candidates', 'users.id', '=', 'candidates.id')->find($id);
+        // $user =   User::join('candidates', 'users.id', '=', 'candidates.id')->find($id);
+        $user =   Candidate::find($id);
 
         return view('admin.adminto.candidateShow')->withUser($user)->withExam(json_decode($user->education));
     }
 
- 
+
 
     /**
      * Show the form for editing the specified resource.
@@ -68,7 +117,9 @@ class CandidateController extends Controller
      */
     public function edit($id)
     {
-        $user =   User::join('candidates', 'users.id', '=', 'candidates.id')->find($id);
+        // $user =   User::join('candidates', 'users.id', '=', 'candidates.id')->find($id);
+
+        $user =   Candidate::find($id);
 
         return view('admin.adminto.candidateEdit')->withUser($user)->withExam(json_decode($user->education));
     }
@@ -83,12 +134,9 @@ class CandidateController extends Controller
     public function update(Request $request, $id)
     {
 
-        $user_id = $id;
+        $candidate                     = Candidate::find($id);
 
-        $candidate                     = Candidate::find($user_id);  // Something should be modified here.
-        $user                          = User::find($user_id);
-
-        $user->name                    = $request->name;
+        $candidate->name               = $request->name;
         $candidate->father             = $request->father;
         $candidate->present_address    = $request->present_address;
         $candidate->parmanent_address  = $request->parmanent_address;
@@ -118,7 +166,7 @@ class CandidateController extends Controller
 
 
         if ($request->hasFile('profile_photo')) {
-            $fileName = 'profile_id_' . $user_id . '_' . time() . '.' . $request->profile_photo->extension();
+            $fileName = 'profile_id_' . $id . '_' . time() . '.' . $request->profile_photo->extension();
             $request->profile_photo->storeAs('public/images/profile_photo/', $fileName);
             $url = Storage::url("images/profile_photo/" . $fileName);
             $candidate->profile_photo = $url;
@@ -128,12 +176,11 @@ class CandidateController extends Controller
             $candidate->profile_photo = null;
         }
 
-        $user->save();
         $candidate->save();
 
         $request->session()->flash('status', 'Profile updated successfully');
 
-        return redirect()->route('admin.candidate.edit', $user_id);
+        return redirect()->route('admin.candidate.edit', $id);
     }
 
     /**
@@ -144,6 +191,7 @@ class CandidateController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Candidate::find($id)->delete();
+        return redirect()->route('admin.candidate.index');
     }
 }

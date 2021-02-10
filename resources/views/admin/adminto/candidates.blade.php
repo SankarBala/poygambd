@@ -8,7 +8,7 @@
                <tr>
                    <th scope="col">ID</th>
                    <th scope="col">Name</th>
-                   <th scope="col">Email</th>
+                   <th scope="col">Father Name</th>
                    <th scope="col">Phone</th>
                    <th scope="col">Address</th>
                    <th scope="col">Date of birth</th>
@@ -18,15 +18,24 @@
            <tbody>
                @foreach ($users as $user)
                    <tr>
-                      <th scope="row">{{ $user->id }}</th>
+                       <th scope="row">{{ $user->id }}</th>
                        <td><a href="{{ route('admin.candidate.show', $user) }}">{{ $user->name }}</a></td>
-                       <td>{{ $user->email }}</td>
+                       <td>{{ $user->father }}</td>
                        <td>{{ $user->phone }}</td>
                        <td>{{ $user->address }}</td>
                        <td>{{ $user->dob }}</td>
                        <td>
-                       <a class="btn btn-warning" href="{{ route('admin.candidate.edit', $user) }}">Edit</a>
-                       <a class="btn btn-danger" href="{{ route('admin.candidate.destroy', $user) }}">Delete</a>
+                           <form id="delete-form" method="POST"
+                               action="{{ route('admin.candidate.destroy', $user->id) }}">
+                               {{ csrf_field() }}
+                               {{ method_field('DELETE') }}
+
+                               <div class="form-group">
+                                   <a class="btn btn-warning"
+                                       href="{{ route('admin.candidate.edit', $user->id) }}">Edit</a>
+                                   <input type="submit" class="btn btn-danger" value="Delete">
+                               </div>
+                           </form>
                        </td>
                    </tr>
                @endforeach
