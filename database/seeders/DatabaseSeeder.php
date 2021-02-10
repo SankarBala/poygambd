@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Administrator',
             'email' => 'info@cube.com.bd',
             'role' => 'admin',
-            'password' => Hash::make('00000000')
+            'password' => Hash::make('Admin@info_cube')
         ]);
 
         // User::factory(1)->create();

@@ -106,49 +106,40 @@
                             <h6 class="text-overflow m-0">Welcome !</h6>
                         </div>
 
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="fe-user"></i>
-                            <span>My Account</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="fe-settings"></i>
-                            <span>Settings</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="fe-lock"></i>
-                            <span>Lock Screen</span>
-                        </a>
+                    
 
                         <div class="dropdown-divider"></div>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="fe-log-out"></i>
-                            <span>Logout</span>
+
+                        <a class="dropdown-item notify-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                 document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
                         </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="">
+                            @csrf
+                        </form>
+
+
 
                     </div>
                 </li>
 
-            
+
             </ul>
 
             <!-- LOGO -->
             <div class="logo-box">
                 <a href="/admin/" class="logo logo-dark text-center">
                     <span class="logo-lg">
-                        <img src="{{asset('storage/images/logo/logo.jpg')}}" alt="" height="60">
+                        <img src="{{ asset('storage/images/logo/logo.jpg') }}" alt="" height="60">
                     </span>
                     <span class="logo-sm">
-                        <img src="{{asset('storage/images/logo/logo.jpg')}}" alt="" height="60">
+                        <img src="{{ asset('storage/images/logo/logo.jpg') }}" alt="" height="60">
                     </span>
                 </a>
-                
+
             </div>
 
             <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
@@ -239,7 +230,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('admin.print.candidateList')}}">
+                            <a href="{{ route('admin.print.candidateList') }}">
                                 <i class="fas fa-angle-double-down"></i>
                                 <span> Export </span>
                             </a>

@@ -54,10 +54,16 @@
                                     <li class=""><a class="" href="{{ route('register') }}">{{ __('Register') }}</a>
                                     </li>
                                 @else
-                                    <li class=""><a class="" href="{{ route('profile') }}">My account</a></li>
+
+                                    @if (Auth::user()->role == 'admin')
+                                        <li class=""><a class="" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                                    @else
+                                        <li class=""><a class="" href="{{ route('profile') }}">My account</a></li>
+                                    @endif
+
                                     <li class="">
                                         <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
+                                                                         document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
                                     </li>
@@ -77,7 +83,7 @@
 
         <div class="row p-2">
             <div class="col-md-2 logo-wrapper text-center">
-                <img class="m-3 logo img-responsive" src="{{asset('storage/images/logo/cube.png')}}" />
+                <img class="m-3 logo img-responsive" src="{{ asset('storage/images/logo/cube.png') }}" />
             </div>
             <div class="col-md-10 text-center text-md-right my-auto">
                 <nav class="main-nav p-2 mr-5">
@@ -171,7 +177,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
-  <!-- Vendor js -->
+    <!-- Vendor js -->
     <script src="/assets/js/vendor.min.js"></script>
 
     @stack('scripts')
