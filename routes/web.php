@@ -59,8 +59,6 @@ Route::group([
 });
 
 
-
-
 Auth::routes();
 
 
@@ -74,3 +72,10 @@ Route::group([
 
 Route::get('/profile/{id?}', [ProfileController::class, 'index'])->where('id', '[0-9]+')->name('profile-index');
 
+
+Route::get("/storagelink", function () {
+    $targetFolder = storage_path("app/public");
+    $linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/storage';
+    symlink($targetFolder, $linkFolder);
+    return "Linked to ".$targetFolder."  with  ".$linkFolder;
+});
