@@ -100,7 +100,7 @@
 	            	<div class="wrap-caption">
 		               	<h1 class="caption-heading"><span>POYGAM</span><br/> MARRIAGE MEDIA</h1>
 		                <p class="uk18">Paygam Marriage Media is an authorized organization</p>
-		                <a href="">Register Now</a> 
+		                <a href="{{route('packages') }}">Register Now</a> 
 		                <a href="#" class="btn btn-light">Learn More</a>
 		            </div>  
 	            </div>
@@ -114,7 +114,7 @@
 	            	<div class="wrap-caption">
 		               	<h1 class="caption-heading"><span>পয়গাম  </span>ম্যারেজ মিডিয়া</h1>
 		                <p class="uk18">আপনার পছন্দের নির্ভরযোগ্য বিয়ের মাধ্যম </p>
-		                <a href="https://register.poygambd.com/" class="btn btn-primary">REGISTAR NOW</a> 
+		                <a href="{{route('packages') }}" class="btn btn-primary">REGISTAR NOW</a> 
 		                <a href="#" class="btn btn-light">Learn More</a>
 		            </div>  
 	            </div>
@@ -127,7 +127,7 @@
 	            	<div class="wrap-caption">
 		                <h1 class="caption-heading"><span>পয়গাম </span>ম্যারেজ মিডিয়া</h1>
 		                <p class="uk18">পয়গাম ম্যারেজ মিডিয়া একটি অনুমদিত প্রতিষ্ঠান</p>
-		                <a href="https://register.poygambd.com/" class="btn btn-primary">Register Now</a> 
+		                <a href="{{route('packages') }}" class="btn btn-primary">Register Now</a> 
 		                <a href="#" class="btn btn-light">Learn More</a>
 		            </div>   
 	            </div>
@@ -307,7 +307,7 @@
 						<p>সন্তানের পছন্দের পাত্র/পাত্রি থাকলে সম্ভব হলে পছন্দকে অগ্রাধিকার দিবেন </p> 
 						<p>বিয়ের খরচ খুব কম টাকার মাঝেই শেষ করবেন </p> 
 						<div class="spacer-10"></div>
-						<a href="https://register.poygambd.com/" class="btn btn-primary" title="HIRE US NOW!">নিবন্ধন করুন</a>
+						<a href="{{route('packages') }}" class="btn btn-primary" title="HIRE US NOW!">নিবন্ধন করুন</a>
 						<div class="spacer-30"></div>
 					</div>
 					<div class="col-sm-12 col-md-12 col-lg-6 offset-lg-1">
@@ -352,7 +352,7 @@
 						<p>প্রতারণার আশ্রয় নিয়ে বিয়ে করবেন না তাই বিয়ের সিদ্ধান্ত ভেবেচিন্তে গ্রহণ করুন।</p> 
 						<p>শুধু সরকারি চাকুরিজীবির আশায় বিয়ে না করে কালক্ষেপণ করবেন না না।</p> 
 						<div class="spacer-10"></div>
-						<a href="https://register.poygambd.com/" class="btn btn-primary" title="HIRE US NOW!">নিবন্ধন করুন</a>
+						<a href="{{route('packages') }}" class="btn btn-primary" title="HIRE US NOW!">নিবন্ধন করুন</a>
 						<div class="spacer-30"></div>
 					</div>
 					<div class="col-sm-12 col-md-12 col-lg-6 offset-lg-1">
@@ -733,7 +733,7 @@
 			                	<p class="uk18 mb-0">উপযুক্ত আর মনের মত পাত্র/পাত্রী খুঁজে নিতে এখানে আছে অসংখ্য প্রোফাইল</p>
 			              	</div>
 			              	<div class="body-action mt-4">
-			                	<a href="#" class="btn btn-light">রেজিট্রেশন করুন </a>
+			                	<a href="{{route('packages') }}" class="btn btn-light">রেজিট্রেশন করুন </a>
 			              	</div>
 			            </div>
 					</div>
