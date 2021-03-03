@@ -18,6 +18,7 @@ class CreateCandidatesTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name')->nullable();
+            $table->string('package')->nullable();
             $table->string('email')->nullable();
             $table->string('father')->nullable();
             $table->string('present_address')->nullable();

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\CandidateController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PrintController;
+use App\Http\Controllers\PackageRegistrationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +19,7 @@ use App\Http\Controllers\PrintController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 })->name('welcome');
 Route::get('/home', function () {
     return view('welcome');
@@ -32,6 +33,15 @@ Route::get('/contact', function () {
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+Route::get('/packages', function () {
+    return view('packages');
+})->name('packages');
+
+Route::get('/registration/{packages}', [PackageRegistrationController::class, 'create'])->name('buy_package');
+Route::post('/registration', [PackageRegistrationController::class, 'store'])->name('registration.store');
+
+
+
 
 Route::get('/401', function () {
     return view('auth.401');
